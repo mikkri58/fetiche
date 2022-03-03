@@ -21,7 +21,7 @@
     max-width: 550px;
     background: url(/img/right_container.jpg);
     background-size: cover;
-    background-position: top;
+    // background-position: top;
     background-repeat: no-repeat;
   }
 }
@@ -86,6 +86,7 @@
     input,
     select,
     textarea {
+      -webkit-appearance: none;
       box-sizing: border-box;
       -webkit-appearance: none;
       width: 100%;
@@ -219,7 +220,7 @@
   position: relative;
 
   &__choose {
-    padding: 24px 0 11px 10px;
+    padding: 24px 27px 11px 10px;
     border-bottom: 2px solid #E8E8E8;
     cursor: pointer;
   }
@@ -246,7 +247,7 @@
     position: absolute;
     top: 60px;
     border: 2px solid #2C363E;
-    z-index: 10;
+    z-index: 100;
     background: #FFFFFF;
   }
 
@@ -340,9 +341,40 @@
   box-sizing: border-box;
 }
 
+.container-opacity.d-none {
+
+  .form-crtf__sub,
+  .form-crtf__input-blade {
+    max-height: 0;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    margin: 0;
+    transition: all 0.2s ease;
+  }
+}
+
+.container-opacity {
+
+  .form-crtf__sub,
+  .form-crtf__input-blade {
+    max-height: auto;
+    opacity: 1;
+    transition: all 0.2s ease;
+  }
+}
+
+
+.form-crtf .mg-top.d-none {
+  margin-top: 0;
+}
+
+
+
 @media only screen and (max-width: 1800px) {
   .certificate__bg {
-    max-width: 300px
+    max-width: 300px;
+
   }
 }
 
@@ -359,6 +391,7 @@
     height: 181px;
     order: 0;
     background-image: url(../img/right_container_mob.jpg);
+    background-position: top;
   }
 
   .certificate__content {

@@ -104,6 +104,7 @@ form.addEventListener('submit', (event) => {
 
 function validate() {
   let flag = false
+  let globalFlag = true
   let fieldInput = document.querySelectorAll(".form-crtf input")
   let fieldTeaxtarea = document.querySelector(".form-crtf textarea")
 
@@ -117,6 +118,7 @@ function validate() {
           } else {
             element.parentNode.classList.add("error")
             flag = false
+            globalFlag = false
           }
           break;
 
@@ -126,6 +128,7 @@ function validate() {
           } else {
             element.parentNode.classList.add("error")
             flag = false
+            globalFlag = false
           }
           break;
 
@@ -135,6 +138,7 @@ function validate() {
           } else {
             element.parentNode.classList.add("error")
             flag = false
+            globalFlag = false
           }
           break;
 
@@ -144,6 +148,7 @@ function validate() {
           } else {
             element.parentNode.classList.add("error")
             flag = false
+            globalFlag = false
           }
           break;
 
@@ -155,12 +160,28 @@ function validate() {
 
   });
 
-  if (fieldTeaxtarea.value.length != 0) {
-    flag = true
+  if (fieldTeaxtarea.value.length != 0 || fieldTeaxtarea.classList.contains("not-validate")) {
+
+    if (globalFlag) {
+      flag = true
+    } else {
+      flag = false
+    }
   } else {
     fieldTeaxtarea.parentNode.classList.add("error")
     flag = false
+    globalFlag = false
   }
+
 
   return flag
 }
+
+document.querySelector('#crtf-mail-agree').addEventListener("click", (evt) => {
+  document.querySelector(".container-opacity").classList.toggle("d-none")
+  document.querySelector(".container-opacity").querySelectorAll(".form-crtf__input-blade input").forEach(element => {
+    element.classList.toggle("not-validate")
+    element.parentNode.classList.remove("error")
+  });
+  document.querySelector(".form-crtf textarea").classList.toggle("not-validate")
+})
