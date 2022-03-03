@@ -184,4 +184,5 @@ document.querySelector('#crtf-mail-agree').addEventListener("click", (evt) => {
     element.parentNode.classList.remove("error")
   });
   document.querySelector(".form-crtf textarea").classList.toggle("not-validate")
+  document.querySelector(".form-crtf textarea").parentNode.classList.remove("error")
 })
